@@ -48,7 +48,7 @@ const userSignUp = asyncHandler(async(req,res)=>{
 
         return res.status(201)
         .json(
-         apiResponse(201,createdUser,"user created successfully")
+         new apiResponse(201,createdUser,"user created successfully")
         )
     }else{
       return res.status(500)
