@@ -59,7 +59,7 @@ const getMessages= asyncHandler(async(req,res)=>{
 
 const sendMessage=asyncHandler(async(req,res)=>{
     const {text}=req.body
-   console.log(text);
+   
    
     const {id:receiverId}=req.params
     const senderId=req.user._id

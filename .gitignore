@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .env
-cloudinary.js
+
 # Ignore all node_modules folders
 node_modules/
 backend/node_modules/
