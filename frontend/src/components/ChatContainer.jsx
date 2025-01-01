@@ -4,6 +4,7 @@ import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
 import { useAuthStore } from "../store/useAuthStore";
 import {formatMessageTime} from "../lib/utils"
+import MessageSkeleton from "./MessageSkeleton";
 
 const ChatContainer = () => {
   const { messages, getMessages,
@@ -25,7 +26,15 @@ useEffect(()=>{
     
 },[messages])
 
-  if (isMessagesLoading) return <div>loading</div>;
+if (isMessagesLoading) {
+  return (
+    <div className="flex-1 flex flex-col overflow-auto">
+      <ChatHeader />
+      <MessageSkeleton />
+      <MessageInput />
+    </div>
+  );
+}
 
   return (
     <div className="flex-1 flex flex-col overflow-auto">
