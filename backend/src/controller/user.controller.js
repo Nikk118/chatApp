@@ -133,7 +133,7 @@ const updateProfile = async (req, res) => {
       const uploadResponse = await uploadOnCloudinary(profilePicture);
       const updatedUser = await User.findByIdAndUpdate(
         userId,
-        { profilePicture: uploadResponse.url },
+        { profilePicture: uploadResponse.secure_url },
         { new: true }
       );
       await updatedUser.save();
