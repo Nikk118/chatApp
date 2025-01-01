@@ -30,9 +30,9 @@ const __dirname=path.resolve();
   
   
 
-app.use("/api/v1/user",userRouter)
+app.use("/api/user",userRouter)
 
-app.use("/api/v1/message",messageRouter)
+app.use("/api/message",messageRouter)
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
