@@ -9,8 +9,9 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [
-    daisyui,
-  ],
+  plugins: [daisyui],
+  daisyui: {
+    themes: ["cupcake","retro","synthwave","cyberpunk","valentine","halloween","forest","aqua","lofi","pastel","luxury","dracula","dark","coffee","winter","light","night"],
+  }
 }
 

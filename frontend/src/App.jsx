@@ -9,11 +9,14 @@ import { useAuthStore } from "./store/useAuthStore"
 import {Loader} from "lucide-react"
 import { useEffect } from "react"
 import { Toaster } from "react-hot-toast";
+import { useThemeStore } from "./store/useThemeStore"
 
 function App() {
   
   const {authUser,checkAuth,isCheckingAuth,onlineUsers}=useAuthStore()
-
+  const {theme}=useThemeStore()
+  console.log(theme);
+  
   useEffect(()=>{
     checkAuth()
     // console.log({authUser});
@@ -22,6 +25,10 @@ function App() {
     console.log("authUser after update:", authUser);
   }, [authUser]);
   console.log({onlineUsers});
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
   
   if (isCheckingAuth && !authUser) {
     return (
