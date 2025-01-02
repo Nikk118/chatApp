@@ -8,6 +8,8 @@ import { io } from "socket.io-client";
 const BASE_URL=import.meta.env.MODE==="development"?"http://localhost:8000":"/";
 export const useAuthStore = create((set,get) => ({
   authUser: null,
+  isSettingOpen:localStorage.getItem("isSettingOpen")||false,
+  isProfileOpen:localStorage.getItem("isProfileOpen")||false,
   isSignUp:false,
   isLogin:false,
   isUpdatingProfile:false,
@@ -15,7 +17,14 @@ export const useAuthStore = create((set,get) => ({
   onlineUsers:[],
   socket:null,
  
-
+  setIsSettingOpen:async()=>{
+    localStorage.setItem("isSettingOpen",!get().isSettingOpen)
+    set({isSettingOpen:!get().isSettingOpen})
+  },
+  setIsProfileOpen:async()=>{
+    localStorage.setItem("isProfileOpen",!get().isProfileOpen)
+    set({isProfileOpen:!get().isProfileOpen})
+  },
 
   checkAuth: async () => {
     try {

@@ -6,21 +6,22 @@ import toast from "react-hot-toast";
 const MessageInput = () => {
 
 const [text,setText]=useState("");
-const {sendMessage}=useChatStore()
+const {sendMessage}=useChatStore();
+const [isSendingMsg,setIsSendingMsg]=useState(false)
 
 const handleSendMessage=async(e)=>{
     e.preventDefault();
-    if (!text.trim()) {
-        return
+    if (!text.trim()||isSendingMsg) {
+      return
     }
-
+    setIsSendingMsg(true);
     try {
         await sendMessage({ text: text.trim() });
-        // clean form
         setText("");
     } catch (error) {
         console.log("error while sending message");
-        
+    }finally{
+      setIsSendingMsg(false)
     }
 }
 
